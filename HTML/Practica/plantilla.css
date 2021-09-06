@@ -1,0 +1,58 @@
+body{
+    background-color: black /*!important*/; /*obliga a esta propiedad sin tener en cuenta la jerarquia*/
+}
+
+body{
+    background-color: rgb(124, 41, 41);
+}
+
+body{
+    background-image: url(Imagenes/ladrillo.jpg);
+}
+
+/*cover es para que se adapte la imagen*/
+body{
+    background-image: url(Imagenes/back.jpg);
+    background-size: cover;
+}
+
+p{
+    color: aqua;
+}
+
+/* el parametro id se busca que se utilice en un unico elemento */
+#primer-parrafo{
+    color:blue;
+}
+
+/* la clase se utiliza para varios elementos de la pagina*/
+.blanco{
+    color: white;
+}
+
+.grande{
+    font-size: 30px;
+}
+
+/*el tag p es padre y las tag que esten dentro de el son hijas y son modificables de la sigueinte manera*/
+/*un tag puede ser tanto hija como padre de otra y se ingresa a la hija de la misma manera*/
+p b{
+    color: rebeccapurple;
+}
+
+/*igual funciona con las clases*/
+.blanco b{
+    color: yellowgreen;
+}
+
+/* se puede elejir varios tag que se suponga que deben tener las misma propiedades*/
+
+.negro b a, h1{
+    font-size: 30px;
+    color: blueviolet;
+}
+
+.negro b a, .negro{
+    font-size: 30px;
+    color: blueviolet;
+}
