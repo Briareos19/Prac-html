@@ -70,7 +70,7 @@ body{
     background-color: rgb(3, 31, 31);
 }
 
-@media (max-width:600px) {
+@media (max-width:500px) {
     /*body{
         display: none;
     }*/
