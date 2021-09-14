@@ -3,6 +3,10 @@ window.onload=iniciar;
 function iniciar(){
     var btnAgregar=document.getElementById("btnAgregar");
     btnAgregar.addEventListener("click", clickBtnAgregar);
+
+    var btnBorrar=document.getElementById("btnBorrar");
+    btnBorrar.addEventListener("click", clickBtnBorrar);
+
     mostarNotas();
 }
 
@@ -11,7 +15,6 @@ function clickBtnAgregar(){
     var txtNota=document.getElementById("txtNota").value;
 
     var notas=[];
-
     if (localStorage.notas) {
         notas=JSON.parse(localStorage.notas);
     }
@@ -23,9 +26,19 @@ function clickBtnAgregar(){
     mostarNotas();
 }
 
+function clickBtnBorrar(){
+    localStorage.clear();
+    mostarNotas();
+}
+
 function mostarNotas(){
     var listado=document.getElementById("listado");
-    var notas=JSON.parse(localStorage.notas);
+    
+    var notas=[];
+    if (localStorage.notas) {
+        notas=JSON.parse(localStorage.notas);
+    }
+
     var html="";
 
     for (var nota of notas) {
