@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>A First App</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <section id="app">
+        <h3>Mis metas</h3>
+        <input type="text" v-model="valorMeta">
+        <button @click="agregarMeta">Agregar meta</button>
+        
+        <!-- es un if en html -->
+        <p v-if="metas.length == 0">No tienes metas!</p>
+        <!--<p v-else-if="metas.length > 0">Ya por fin tienes metas!</p>-->
+        <p v-else>Ya por fin tienes metas!</p>
+        
+        <ul v-show="metas.length > 0">
+            <li v-for="(valor, indice) in metas" @click="quitarTarea(indice)">
+                {{indice}}-{{valor}}
+            </li>
+        </ul>
+
+    </section>
+    <script src="https://unpkg.com/vue@next"></script>
+    <script src="app7.js"></script>
+  </body>
+  
+</html>

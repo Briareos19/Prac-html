@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Vue Basics</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Jost:wght@400;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles.css" />
+    <script src="https://unpkg.com/vue@next" defer></script>
+    <script src="app.js" defer></script>
+  </head>
+
+  <body>
+    <header>
+      <h1>Monster Slayer</h1>
+    </header>
+
+    <div id="game">
+      
+      <section id="monster" class="container">
+        <h2>Monster Health</h2>
+        <div class="healthbar">
+          <div class="healthbar__value" :style="monsterBarStyles"></div>
+        </div>
+      </section>
+
+      <section id="player" class="container">
+        <h2>Your Health</h2>
+        <div class="healthbar">
+          <div class="healthbar__value" :style="playerBarStyles"></div>
+        </div>
+      </section> 
+
+      <section v-if="winner">
+        <h2>Game over</h2>
+        <h2 v-if="winner=='jugador'">Ganaste!</h2>
+        <h2 v-else-if="winner=='monstruo'">Perdiste!</h2>
+        <h2 v-else>Empate!</h2>
+      </section>
+
+      <section id="controls">
+        <button @click="atacarMonstruo">ATTACK</button>
+        <button :disabled="calculoEspecial" @click="atacarEspecialMonstruo">SPECIAL ATTACK</button>
+        <button @click="curarJugador">HEAL</button>
+        <button @click="rendirse">SURRENDER</button>
+      </section>
+      
+      <section id="log" class="container">
+        <h2>Battle Log</h2>        
+        <ul>
+          <li v-for="mensaje in mensajes">
+            <span :class="{'log--player': mensaje.actionBy=='jugador',
+          'log--monster': mensaje.actionBy=='monstruo' }">
+              {{mensaje.actionBy=='jugador'? 'JUGADOR':'MONSTRUO'}}
+            </span>
+            <span v-if="mensaje.actionType=='curar'">
+              <span class="log--heal">
+                Se cura a si mismo por un valor de {{mensaje.actionValue}}
+              </span>
+            </span>
+            <span v-else>
+              <span class="log--damage">
+                Ataca y hace {{mensaje.actionValue}} daño
+              </span>
+            </span>
+          </li>
+        </ul>
+      </section>
+
+    </div>
+  </body>
+</html>

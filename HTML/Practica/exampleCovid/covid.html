@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title></title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="style.css">
+    </head>
+    <body>
+
+        <div>
+            <h1>Estadisticas Covid 19</h1>
+
+            <b>Fecha</b><input type="date" name="" id="inputFecha"/><br/>
+            <b>Pais</b>
+            <select name="" id="selectPais">
+                <option value="Colombia">Colombia</option>
+                <option value="Spain">España</option>
+                <option value="Germany">Alemania</option>
+            </select>
+            <br/>
+
+            <button id="btnCargar">Cargar Estadisticas</button> <br/>
+
+            <ul>
+                <li> Confirmados: <span id="today_confirmed"></span> </li>
+                <li> Muertes: <span id="today_deaths"></span> </li>
+                <li> USI: <span id="today_intensive_care"></span> </li>
+                <li> Nuevos Confirmados: <span id="today_new_confirmed"></span> </li>
+                <li> Nuevas Muertes: <span id="today_new_deaths"></span> </li>
+                <li> Nuevos casos USI: <span id="today_new_intensive_care"></span> </li>
+                <li> Nuevos casos Abiertos: <span id="today_new_open_cases"></span> </li>
+                <li> Recuperados: <span id="today_new_recovered"></span> </li>
+                <li> Total Pacientes hospitalizados: <span id="today_new_total_hospitalised_patients"></span> </li>
+                <li> Nuevos casos: <span id="today_open_cases"></span> </li>
+                <li> Total recuperados: <span id="today_recovered"></span> </li>
+            </ul>
+
+            
+
+        </div>
+
+
+        <script src="script.js" async defer></script>
+    </body>
+</html>

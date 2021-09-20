@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>A First App</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <section id="metas">
+        <h2>Mis metas</h2>
+        <input type="text" v-model="valorMeta">
+        <button @click="adicionarMeta">Agregar meta</button>
+        <p v-if="metas.length === 0">No hay metas aun</p>
+        <ul v-show="metas.length>0">
+            <li v-for="(meta,indice) in metas" @click="remover(indice)">{{meta}}-{{indice}}</li>
+        </ul>
+        
+    </section>
+    <script src="https://unpkg.com/vue@next"></script>
+    
+    <script src="app8.js"></script>
+  </body>
+</html>

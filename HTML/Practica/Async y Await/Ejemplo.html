@@ -15,20 +15,18 @@
 
         <script>
 
-        async function cargarJson(){
-/*                fetch('https://jsonplaceholder.typicode.com/todos/1')
-                .then(response => response.json())
-                .then(jsonCargado);
-*/
-               let respuesta = await fetch('https://jsonplaceholder.typicode.com/todos/1');
-               let json = await respuesta.json();
-               alert(json);
-               console.log(json);
-               jsonCargado(json);
+            async function cargarUrl(){
+                let respuesta = await fetch(url);
+                let json = await respuesta.json();
+
+                return respuesta.json();
             }
 
+
          
-            function jsonCargado(json){
+            async function cargarJson(){
+
+                let json= await cargarUrl('https://jsonplaceholder.typicode.com/todos/1');
 
                 let spanNamePost=document.getElementById("txtNombrePost");
                 let completo=document.getElementById("txtCompleto");
@@ -49,7 +47,7 @@
 
                 
 
-                console.log(json);
+                //console.log(json);
             }
 
             cargarJson();

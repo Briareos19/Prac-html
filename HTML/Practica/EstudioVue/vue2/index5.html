@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>A First App</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <section id="variables">
+        <p>el valor del contador es {{contador}}</p>
+        <button @click="adicionar1">Incrementar 1</button>
+        <button @click="disminuir1">Disminuir 1</button>
+        <br>
+
+        <button @click="adicionarN(10)">Incrementar 10</button>
+        <br><br>
+
+        <input id="nombre" type="text" v-model="nombre">
+        <input id="apellido" type="text" v-model="apellido">
+        <p>{{nombreCompleto}}</p>
+        <button @click="resetName">Resetear nombre</button>
+        <br><br> 
+               
+    </section>
+    <script src="https://unpkg.com/vue@next"></script>
+    <script src="app5.js"></script>
+  </body>
+  
+</html>
