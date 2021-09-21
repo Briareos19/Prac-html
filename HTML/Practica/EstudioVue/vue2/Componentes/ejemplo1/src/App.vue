@@ -1,17 +1,49 @@
 <template>
   <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
-  </div>
+      <img alt="Vue logo" src="./assets/logo.png">
+      <ul>
+          <contacto v-for="amigo in amigos"
+          :key="amigo.id"
+          :id="amigo.id"
+          :nombre="amigo.nombre"
+          :telefono="amigo.telefono"
+          :email="amigo.email"
+          :esFavorito="amigo.esFavorito"
+          ></contacto>
+      </ul>
+    <!--   <contacto
+      :key="joshua.id"
+      :id="joshua.id"
+      :nombre="joshua.nombre"
+      :telefono="joshua.telefono"
+      :email="joshua.email">
+      </contacto>  --> 
+  </div>  
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+
+import Contacto from './components/Contacto.vue'
 
 export default {
   name: 'App',
   components: {
-    HelloWorld
+    Contacto
+  },
+  data(){
+    return {
+      amigos: [
+        {
+          id: "david", nombre: "David Moreno", telefono: "1234", email: "david@gmail.com", esFavorito:true
+        },
+        {
+          id: "nini", nombre: "Nini Santanilla", telefono: "5678", email: "nini@gmail.com"
+        }
+      ],
+/*       joshua: {
+          id: "joshua", nombre: "Joshua Triana", telefono: "8888", email: "joshua@gmail.com"
+        } */
+    }
   }
 }
 </script>
