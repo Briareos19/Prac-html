@@ -1,5 +1,10 @@
 <template>
     <v-app>
+        <!-- Espacio utilizado como prueba de Api -->
+        <div class="d-flex justify-center">
+          <h1>Nombre Pelicula: {{nombre_pelicula}} </h1>
+        </div>
+
         <div class="d-flex justify-center">
           <h1 id="addTodo">Add ToDo</h1>
         </div>
@@ -97,6 +102,16 @@ created() {
     axios.get("http://localhost:3000/todo/completed")
     .then(response => (this.completedTodos = response.data))
     .catch(error => console.log(error));
+
+    // se puede usar axios para hacer conecion con api
+    //se usaria la url de la api, y si utiliza autenticacion seria ?api_key="y la apikey"
+        //axios.get("http://localhost:3000/todo/completed")
+    //en esta caso el response.data, seria todo el json de la api
+        //.then(response => (this.completedTodos = response.data))
+    //como es un diccionario se puede usar asi
+    //nombre de pelicula es la variable que esta al principio de este template
+        //.then(response => (this.nombre_pelicula = response.data[title]))
+        //.catch(error => console.log(error));
 }
 }
 </script>

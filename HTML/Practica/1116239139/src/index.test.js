@@ -1,3 +1,4 @@
+require('jest-fetch-mock').enableMocks()
 import { fireEvent, getByText } from '@testing-library/dom'
 import '@testing-library/jest-dom/extend-expect'
 import { JSDOM } from 'jsdom'
@@ -17,62 +18,53 @@ describe('index.html', () => {
     // https://github.com/jsdom/jsdom#executing-scripts
     dom = new JSDOM(html, { runScripts: 'dangerously' })
     container = dom.window.document.body
+    fetchMock.doMock()
+    fetch.resetMocks()
   })
 
-  it('renders just one h1 element', () => {
-    expect(container.querySelectorAll('h1').length).toBe(1)
+  it('renders h3 element by 3', () => {
+    expect(container.querySelectorAll('h3').length).toBe(3)
   })
 
-  it('check the main tag', () => {
-    expect(container.querySelector('main').parentElement.tagName).toBe("BODY")
+  it('check the styles tag', () => {
+    expect(container.querySelector('style')).toBeNull()
+  })
+  it('check the services id', () => {
+    expect(container.querySelector('#servicio2')).not.toBeNull()
+  })
+  it('service 1 title', () => {
+    expect(container.querySelectorAll('h3')[0].textContent).toBe("")
+  })
+  it('service 2 title', () => {
+    expect(container.querySelectorAll('h3')[1].textContent).toBe("")
+  })
+  it('service 3 title', () => {
+    expect(container.querySelectorAll('h3')[2].textContent).toBe("")
+  })
+  it('service 1 p', () => {
+    expect(container.querySelectorAll('p')[0].textContent).toBe("")
+  })
+  it('service 2 p', () => {
+    expect(container.querySelectorAll('p')[1].textContent).toBe("")
+  })
+  it('service 3 p', () => {
+    expect(container.querySelectorAll('p')[2].textContent).toBe("")
+  })
+  it('service 1 img', () => {
+    expect(container.querySelectorAll('img')[2].src).toBe("")
+  })
+  it('service 2 img', () => {
+    expect(container.querySelectorAll('img')[3].src).toBe("")
+  })
+  it('service 3 img', () => {
+    expect(container.querySelectorAll('img')[4].src).toBe("")
+  })
+  it('checking the row', () => {
+    expect(container.querySelector('#envoltorioServicios').classList.contains('row')).toBeTruthy()
   })
 
-  it('renders a header element', () => {
-    expect(container.querySelector('header')).not.toBeNull()
-  })
-
-  it('renders a nav element', () => {
-    expect(container.querySelector('nav')).not.toBeNull()
-  })
-
-  it('renders a h1 element inside the header tag', () => {
-    expect(container.querySelector('header').contains(container.querySelector('h1'))).toBeTruthy()
-  })
-
-  it('renders a nav element inside the header tag', () => {
-    expect(container.querySelector('header').contains(container.querySelector('nav'))).toBeTruthy()
-  })
-
-  it('renders a footer element', () => {
-    expect(container.querySelector('footer')).not.toBeNull()
-  })
-
-  it('check a footer element class', () => {
-    expect(container.querySelector('footer').className).toBe('footer-section')
-  })
-
-  it('check the news section tag and id', () => {
-    expect(container.querySelector('#news').tagName).toBe("SECTION")
-  })
-
-  it('check the team section tag and id', () => {
-    expect(container.querySelector('#team').tagName).toBe("SECTION")
-  })
-
-  it('check the services section tag and id', () => {
-    expect(container.querySelector('#services').tagName).toBe("SECTION")
-  })
-
-  it('check a news section class', () => {
-    expect(container.querySelector('#news').className).toBe('news-section')
-  })
-
-  it('check a team section class', () => {
-    expect(container.querySelector('#team').className).toBe('team-section')
-  })
-
-  it('check a services section class', () => {
-    expect(container.querySelector('#services').className).toBe('services-section')
-  })
-
+  it('res 200', async () => {
+    const data = await fetch('./data.json', { method: 'GET' });
+    expect(data.statusText).toBe('OK');
+  });
 })
