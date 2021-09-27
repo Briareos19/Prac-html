@@ -1,0 +1,47 @@
+{
+  "name": "ecommerce-ui-nuggets",
+  "version": "0.1.4",
+  "description": "A library of UI components built specifically for E-commerce sites using VueJs",
+  "keywords": [
+    "vuejs",
+    "retail",
+    "ecommerce",
+    "ui-components",
+    "vue-components"
+  ],
+  "homepage": "https://github.com/Shreerang/Vue-Nuggets",
+  "bugs": "https://github.com/Shreerang/Vue-Nuggets/issues?utf8=%E2%9C%93&q=is%3Aissue",
+  "license": "MIT",
+  "author": {
+    "name": "Shreerang Patwardhan",
+    "email": "patwardhan.shreerang@gmail.com",
+    "url": "https://twitter.com/shreerangp"
+  },
+  "main": "dist/ecommerce-ui-nuggets.umd.js",
+  "module": "dist/ecommerce-ui-nuggets.esm.js",
+  "unpkg": "dist/ecommerce-ui-nuggets.min.js",
+  "files": [
+    "dist/*",
+    "src/*",
+    "!src/lib-dev.vue"
+  ],
+  "scripts": {
+    "build": "npm run build:unpkg & npm run build:es & npm run build:umd",
+    "build:umd": "cross-env NODE_ENV=production rollup --config build/rollup.config.js --format umd --file dist/ecommerce-ui-nuggets.umd.js",
+    "build:es": "cross-env NODE_ENV=production rollup --config build/rollup.config.js --format es --file dist/ecommerce-ui-nuggets.esm.js",
+    "build:unpkg": "cross-env NODE_ENV=production rollup --config build/rollup.config.js --format iife --file dist/ecommerce-ui-nuggets.min.js"
+  },
+  "dependencies": {
+    "vue": "^2.5.22"
+  },
+  "devDependencies": {
+    "cross-env": "^5.2.0",
+    "minimist": "^1.2.0",
+    "rollup": "^0.67.4",
+    "rollup-plugin-buble": "^0.19.6",
+    "rollup-plugin-replace": "^2.1.0",
+    "rollup-plugin-uglify-es": "0.0.1",
+    "rollup-plugin-vue": "4.3.2",
+    "vue-template-compiler": "^2.5.21"
+  }
+}
