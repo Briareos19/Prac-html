@@ -53,7 +53,7 @@
                           La validacion de los nombres es requerido.
                         </div>
                       </div>
-                    </div>
+                    
                       <div class="col-sm-6">
                         <label for="lastName" class="form-label">Apellidos</label>
                         <input type="text" class="form-control" id="lastName" placeholder="" value="" required>
@@ -61,7 +61,8 @@
                             La validacion de los apellidos es requerido.
                         </div>
                       </div>
-          
+                    <!-- </div> -->
+
                       <div class="col-12">
                         <label for="email" class="form-label">Email </label>
                         <input type="email" class="form-control" id="email" placeholder="you@example.com">
@@ -78,6 +79,7 @@
                         </div>
                       </div>
           
+                    <div>
                       <div class="col-md-5">
                         <label for="country" class="form-label">Departamento</label>
                         <select class="form-select" id="country" required>
@@ -102,6 +104,8 @@
                         </div>
                       </div>
           
+                    </div>
+                  </div>
                     <hr class="my-4">
           
                     <div class="form-check">
