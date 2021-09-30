@@ -41,50 +41,49 @@
                     
                       <div class="col-sm-6">
                         <label for="unit" class="form-label">Unidades</label>
-                        <input type="text" class="form-control" id="unit" placeholder="" value="" required>
+                        <input type="text" class="form-control" id="unit" placeholder="0" value="" required>
 
                       </div>
             
 
+                      <div class="col-6">
+                        <label for="Pcompra" class="form-label">Precio de Compra </label>
+                        <input type="number" class="form-control" id="Pcompra" placeholder="0" required>
+
+                      </div>
+          
+                      <div class="col-6">
+                        <label for="Pventa" class="form-label">Precio de Venta</label>
+                        <input type="number" class="form-control" id="Pventa" placeholder="0" required>
+
+                      </div>
+
                       <div class="col-12">
-                        <label for="email" class="form-label">Email </label>
-                        <input type="email" class="form-control" id="email" placeholder="you@example.com">
+                        <label for="detalle" class="form-label">Detalle</label>
+                      <input type="text" class="form-control" id="detalle" placeholder="0" required>
 
                       </div>
           
-                      <div class="col-12">
-                        <label for="address" class="form-label">Direccion</label>
-                        <input type="text" class="form-control" id="address" placeholder="Cra 25 #25-25" required>
+                      <div>
+                        <div class="col-md-5">
+                          <label for="categoria" class="form-label">Categoria</label>
+                          <select class="form-select" id="categoria" required>
+                            <option value="">Elige...</option>
+                            <option>Avicultura</option>
+                            <option>Equinos</option>
+                            <option>Ganaderia</option>
+                            <option>Mascotas</option>
+                            <option>Porcicultura</option>
+                          </select>
 
+                        </div>          
                       </div>
-          
-                    <div>
-                      <div class="col-md-5">
-                        <label for="country" class="form-label">Departamento</label>
-                        <select class="form-select" id="country" required>
-                          <option value="">Elige...</option>
-                          <option>Valle del Cauca</option>
-                        </select>
-
-                      </div>
-          
-                      <div class="col-md-4">
-                        <label for="state" class="form-label">Ciudad</label>
-                        <select class="form-select" id="state" required>
-                          <option value="">Elige...</option>
-                          <option>Andalucia</option>
-                          <option>Cerrito</option>
-                          <option>Tulua</option>
-                        </select>
-
-                      </div>
-          
-                    </div>
                   </div>
           
                     <hr class="my-4">
           
                     <button class="w-100 btn btn-primary btn-lg" type="submit">Ingresar Producto</button>
+                    <hr class="my-4">
                   </form>
                 </div>
             <!-- fin del formulario -->
