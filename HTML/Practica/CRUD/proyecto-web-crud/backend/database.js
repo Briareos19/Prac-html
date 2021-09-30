@@ -9,6 +9,6 @@
 
  module.exports={
    db:
-   "mongodb+srv://jhon-cardona:Belphegor49@cluster0.clqsr.mongodb.net/el-galpon-inventario?retryWrites=true&w=majority"
+    "mongodb://localhost:27017/vuecrudmevn"
  }
  
