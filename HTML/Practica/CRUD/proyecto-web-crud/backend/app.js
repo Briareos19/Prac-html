@@ -1,3 +1,4 @@
+//se puede crear variable const o dejar que el sistema lo haga
 let express = require("express"),
   cors = require("cors"),
   mongoose = require("mongoose"),
@@ -20,7 +21,8 @@ mongoose
     }
   );
 
-const studentAPI = require("../backend/routes/student.route");
+const productAPI = require("../backend/routes/product.route");
+
 const app = express();
 app.use(bodyParser.json());
 app.use(
@@ -31,9 +33,9 @@ app.use(
 app.use(cors());
 
 // API
-app.use("/api", studentAPI);
+app.use("/api", productAPI);
 
-// Create port
+// Create port -promesa-
 const port = process.env.PORT || 4000;
 const server = app.listen(port, () => {
   console.log("Connected to port " + port);
