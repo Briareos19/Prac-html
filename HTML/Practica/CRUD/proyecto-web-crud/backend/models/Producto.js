@@ -6,18 +6,24 @@ let productSchema = new Schema(
     nombre: {
       type: String,
     },
+    unidades: {
+        type: Number,
+    },
     precio_compra: {
       type: Number,
     },
     precio_venta: {
       type: Number,
     },
-    stock: {
+    detalle: {
         type: String,
     },
-    detalle: {
+    categoria: {
     type: String,
     },
+    imagen: {
+      type: String,
+    }
   },
   {
     collection: "inventario",

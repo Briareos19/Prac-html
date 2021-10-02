@@ -40,6 +40,11 @@ const routes = [
     component: () => import("../components/inventoryCreateComponent"),
   },
   {
+    path: "/edit/:id",
+    name: "edit",
+    component: () => import("../components/editComponent"),
+  },
+  {
     path: "/cart",
     name: "cart",
     component: () => import("../components/cartComponent"),

@@ -1,14 +1,10 @@
-// module.exports = {
-//   db: "mongodb://localhost:27017/vuecrudmevn",
-// };
 
-/* module.exports = {
-  db:
-  "mongodb+srv://lmolero:1126254560@cluster0.bpms5.mongodb.net/vuecrudmevn?retryWrites=true&w=majority"
- }; */
-
- module.exports={
+/*  module.exports={
    db:
-    "mongodb://localhost:27017/vuecrudmevn"
- }
+    "mongodb+srv://jhon-cardona:Belphegor49@cluster0.clqsr.mongodb.net/products?retryWrites=true&w=majority"
+ } */
  
+ module.exports={
+  db:
+   "mongodb+srv://jhoncardona:3qu1p01@equipo1.cg3y2.mongodb.net/products?retryWrites=true&w=majority"
+}

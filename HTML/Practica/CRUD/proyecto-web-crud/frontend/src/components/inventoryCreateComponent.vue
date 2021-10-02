@@ -15,11 +15,6 @@
                         Ingresar producto
                         </router-link>
                     </li>
-                    <li class="nav-item">
-                        <router-link class="nav-link" to="/">
-                        Editar Producto
-                        </router-link>
-                    </li>
                 </ul>
             </div>
             </nav>
@@ -31,43 +26,42 @@
 
             <!-- inicio del formulario -->
                 <div class="col-md-7 col-lg-8">
-                  <form class="needs-validation" novalidate>
+                  <form class="needs-validation" novalidate @submit.prevent="handleSubmitForm">
                     <div class="row g-3">
                       <div class="col-sm-6">
                         <label for="product" class="form-label">Producto</label>
-                        <input type="text" class="form-control" id="product" placeholder="" value="" required>
+                        <input type="text" v-model="producto.nombre" class="form-control" id="product" placeholder="" value="" required>
 
                       </div>
                     
                       <div class="col-sm-6">
                         <label for="unit" class="form-label">Unidades</label>
-                        <input type="text" class="form-control" id="unit" placeholder="0" value="" required>
+                        <input type="number" v-model="producto.unidades" class="form-control" id="unit" placeholder="0" value="" required>
 
                       </div>
             
 
                       <div class="col-6">
                         <label for="Pcompra" class="form-label">Precio de Compra </label>
-                        <input type="number" class="form-control" id="Pcompra" placeholder="0" required>
+                        <input type="number" v-model="producto.precio_compra" class="form-control" id="Pcompra" placeholder="0" required>
 
                       </div>
           
                       <div class="col-6">
                         <label for="Pventa" class="form-label">Precio de Venta</label>
-                        <input type="number" class="form-control" id="Pventa" placeholder="0" required>
+                        <input type="number" v-model="producto.precio_venta" class="form-control" id="Pventa" placeholder="0" required>
 
                       </div>
 
                       <div class="col-12">
                         <label for="detalle" class="form-label">Detalle</label>
-                      <input type="text" class="form-control" id="detalle" placeholder="0" required>
-
+                        <input type="text" v-model="producto.detalle" class="form-control" id="detalle" placeholder="0" required>
                       </div>
           
                       <div>
                         <div class="col-md-5">
                           <label for="categoria" class="form-label">Categoria</label>
-                          <select class="form-select" id="categoria" required>
+                          <select class="form-select" v-model="producto.categoria" id="categoria" required>
                             <option value="">Elige...</option>
                             <option>Avicultura</option>
                             <option>Equinos</option>
@@ -75,49 +69,22 @@
                             <option>Mascotas</option>
                             <option>Porcicultura</option>
                           </select>
-
                         </div>          
                       </div>
+
+                      <div class="col-12">
+                        <label for="url-imagen" class="form-label">Imagen</label>
+                        <input type="text" v-model="producto.imagen" class="form-control" id="url-imagen" placeholder="ingresa url" required>
+                      </div>
+
                   </div>
           
                     <hr class="my-4">
-          
-                    <button class="w-100 btn btn-primary btn-lg" type="submit">Ingresar Producto</button>
+                      <button class="w-100 btn btn-primary btn-lg" type="submit">Ingresar Producto</button>
                     <hr class="my-4">
                   </form>
                 </div>
             <!-- fin del formulario -->
-
-            <h2>Lista de Productos</h2>
-            <div class="table-responsive">
-                <table class="table table-striped table-sm">
-                    <thead>
-                        <tr>
-                        <th scope="col">id</th>
-                        <th scope="col">producto</th>
-                        <th scope="col">unidades</th>
-                        <th scope="col">P.compra</th>
-                        <th scope="col">P.venta</th>
-                        </tr>
-                    </thead>
-                        <tbody>
-                            <tr>
-                            <td>01</td>
-                            <td>dogchaw 350g</td>
-                            <td>10</td>
-                            <td>8000</td>
-                            <td>10000</td>
-                            </tr>
-                            <tr>
-                            <td>02</td>
-                            <td>dogchaw 500g</td>
-                            <td>20</td>
-                            <td>12000</td>
-                            <td>14000</td>
-                            </tr>
-                        </tbody>
-                </table>
-            </div>
             </main>
         </div>
     </div>
@@ -126,10 +93,51 @@
 
 
 <script>
-    export default {
+/*     export default {
       name: 'inventory',
       props: {
         msg: String
       }
-    }
-    </script>
+    } */
+import axios from "axios";
+
+export default {
+  data() {
+    return {
+      producto: {
+          nombre:"", 
+          unidades:0, 
+          precio_compra:0, 
+          precio_venta:0, 
+          detalle:"",
+          categoria:"",
+          imagen:""
+      },
+    };
+  },
+  methods: {
+    handleSubmitForm() {
+      let apiURL = "http://localhost:4000/api/create-product";
+
+      axios
+        .post(apiURL, this.producto)
+        .then(() => {
+          // this.$router.push("/view");
+          this.producto = {
+          nombre:"", 
+          unidades:0, 
+          precio_compra:0, 
+          precio_venta:0, 
+          detalle:"",
+          categoria:"",
+          imagen:""
+          };
+        })
+        .catch((error) => {
+          console.log(error);
+        });
+    },
+  },
+};
+</script>
+

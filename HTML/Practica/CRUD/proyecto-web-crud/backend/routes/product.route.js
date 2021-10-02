@@ -4,6 +4,7 @@ const productRoute = express.Router();
 // Student model
 let ProductModel = require("../models/Producto");
 
+//enlistar
 productRoute.route("/").get((req, res) => {
   ProductModel.find((error, data, next) => {
     if (error) {
@@ -15,7 +16,20 @@ productRoute.route("/").get((req, res) => {
   });
 });
 
-productRoute.route("/create-student").post((req, res, next) => {
+//encontrar a uno especifico
+productRoute.route("/search-product/:id").get((req, res) => {
+  ProductModel.findById(req.params.id,(error, data, next) => {
+    if (error) {
+      return next(error);
+    } else {
+      console.log(error);
+      res.json(data);
+    }
+  });
+});
+
+//crear productos
+productRoute.route("/create-product").post((req, res, next) => {
   ProductModel.create(req.body, (error, data) => {
     if (error) {
       return next(error);
@@ -26,7 +40,7 @@ productRoute.route("/create-student").post((req, res, next) => {
   });
 });
 
-productRoute.route("/edit-student/:id").get((req, res) => {
+productRoute.route("/edit-product/:id").get((req, res) => {
   ProductModel.findById(req.params.id, (error, data, next) => {
     if (error) {
       console.log(error);
@@ -38,7 +52,7 @@ productRoute.route("/edit-student/:id").get((req, res) => {
 });
 
 // Update student
-productRoute.route("/update-student/:id").put((req, res, next) => {
+productRoute.route("/update-product/:id").put((req, res, next) => {
   ProductModel.findByIdAndUpdate(
     req.params.id,
     {
@@ -50,14 +64,14 @@ productRoute.route("/update-student/:id").put((req, res, next) => {
         return next(error);
       } else {
         res.json(data);
-        console.log("Student successfully updated!");
+        console.log("Product successfully updated!");
       }
     }
   );
 });
 
 // Delete student
-productRoute.route("/delete-student/:id").delete((req, res, next) => {
+productRoute.route("/delete-product/:id").delete((req, res, next) => {
   ProductModel.findByIdAndRemove(req.params.id, (error, data) => {
     if (error) {
       return next(error);

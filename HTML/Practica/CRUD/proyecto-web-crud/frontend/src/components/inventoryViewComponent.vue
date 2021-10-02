@@ -16,11 +16,6 @@
                         Ingresar producto
                         </router-link>
                     </li>
-                    <li class="nav-item">
-                        <router-link class="nav-link" to="/">
-                        Editar Producto
-                        </router-link>
-                    </li>
                 </ul>
             </div>
             </nav>
@@ -31,33 +26,27 @@
                     <table class="table table-striped table-sm">
                         <thead>
                             <tr>
-                            <th scope="col">id</th>
                             <th scope="col">producto</th>
                             <th scope="col">unidades</th>
                             <th scope="col">P.compra</th>
                             <th scope="col">P.venta</th>
-                            <th scope="col">Fecha de vencimiento</th>
-                            <th scope="col">imagen</th>
+                            <th scope="col">Categoria</th>
+                            <th scope="col">Detalle</th>
+                            <th>acciones</th>
                             </tr>
                         </thead>
                             <tbody>
-                                <tr>
-                                <td>01</td>
-                                <td>dogchaw 350g</td>
-                                <td>10</td>
-                                <td>8000</td>
-                                <td>10000</td>
-                                <td>15-09-21</td>
-                                <td></td>
-                                </tr>
-                                <tr>
-                                <td>02</td>
-                                <td>dogchaw 500g</td>
-                                <td>20</td>
-                                <td>12000</td>
-                                <td>14000</td>
-                                <td>25-07-19</td>
-                                <td></td>
+                                <tr v-for="producto in productos" :key="producto.id">
+                                    <td>{{producto.nombre}}</td>
+                                    <td>{{producto.unidades}}</td>
+                                    <td>{{producto.precio_compra}}</td>
+                                    <td>{{producto.precio_venta}}</td>
+                                    <td>{{producto.categoria}}</td>
+                                    <td>{{producto.detalle}}</td>
+                                    <td>
+                                        <router-link class="btn btn-danger" :to="{name:'edit', params:{id: producto._id}}">Editar</router-link>
+                                        <button @click.prevent="deleteProduct(producto._id)">Eliminar</button>
+                                    </td>
                                 </tr>
                             </tbody>
                     </table>
@@ -70,10 +59,41 @@
 
 
 <script>
-    export default {
-      name: 'inventory',
-      props: {
-        msg: String
+import axios from "axios";
+
+export default {
+  data() {
+    return {
+      productos: [],
+    };
+  },
+  created() {
+    let apiURL = "http://localhost:4000/api";
+    axios
+      .get(apiURL)
+      .then((res) => {
+        this.productos = res.data;
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  },
+  methods: {
+    deleteProduct(id) {
+      let apiURL = `http://localhost:4000/api/delete-product/${id}`;
+      let indexOfArrayItem = this.productos.findIndex((i) => i._id === id);
+
+      if (window.confirm("desear eliminar el producto?")) {
+        axios
+          .delete(apiURL)
+          .then(() => {
+            this.productos.splice(indexOfArrayItem, 1);
+          })
+          .catch((error) => {
+            console.log(error);
+          });
       }
-    }
-    </script>
+    },
+  },
+};
+</script>
